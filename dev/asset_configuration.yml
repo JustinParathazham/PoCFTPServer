@@ -1,28 +1,28 @@
-tunnel_configurations:
-  ipsec_tunnels:
-    test-vpn-1:
-      name: "Simulator Tunnel 1"
-      producer: "Some Producer"
-      peer_ip: "<dynamic>"
-      peer_dynamic_dns: "<dynamic>"
-      remote_cidr: 192.168.0.0/24
-      dead_peer_detection: on-demand # [disable | on-idle | on-demand]
-      dpd_retryinterval: 20
-      dpd_retrycount: 3
-      ike_version: 2 # [1 | 2] = var.ike_versions
-      mode: main # [aggressive|main]
-      phase1_dh_group: 16
-      phase1_proposal: aes256-sha256
-      phase1_lifetime: 86400
-      phase2_dh_group: 16
-      phase2_proposal: aes256-sha256
-      phase2_lifetime: 3600
+# tunnel_configurations:
+#   ipsec_tunnels:
+#     test-vpn-1:
+#       name: "Simulator Tunnel 1"
+#       producer: "Some Producer"
+#       peer_ip: "<dynamic>"
+#       peer_dynamic_dns: "<dynamic>"
+#       remote_cidr: 192.168.0.0/24
+#       dead_peer_detection: on-demand # [disable | on-idle | on-demand]
+#       dpd_retryinterval: 20
+#       dpd_retrycount: 3
+#       ike_version: 2 # [1 | 2] = var.ike_versions
+#       mode: main # [aggressive|main]
+#       phase1_dh_group: 16
+#       phase1_proposal: aes256-sha256
+#       phase1_lifetime: 86400
+#       phase2_dh_group: 16
+#       phase2_proposal: aes256-sha256
+#       phase2_lifetime: 3600
 
-asset_endpoints:
-  asset-1:
-    name: "Asset 1"
-    vpn_id: test-vpn-1
-    source_ip: "10.156.35.1"
-    target_ip: "<dynamic>"
-    tcp_ports:
-      - 53530
+# asset_endpoints:
+#   asset-1:
+#     name: "Asset 1"
+#     vpn_id: test-vpn-1
+#     source_ip: "10.156.35.1"
+#     target_ip: "<dynamic>"
+#     tcp_ports:
+#       - 53530

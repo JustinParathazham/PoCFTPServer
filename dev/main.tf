@@ -2,55 +2,73 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "3.22"
-    }
-    fortios = {
-      source  = "fortinetdev/fortios"
-      version = "1.7"
+      version = "~> 3.0"
     }
   }
-
-  backend "s3" {
-
-    bucket = "trad-nonprod-nes-management"
-    key    = "enr-fr-infrastructure/dev/terraform.tfstate"
-    region = "eu-central-1"
-
-    profile = "trad-nonprod-nes-tools"
-  }
 }
 
-# Configure the AWS Provider for Industrial Edge Account
+# Configure the AWS Provider
 provider "aws" {
-  alias = "industrial_shared"
-  region = "eu-central-1"
-
-  allowed_account_ids = ["646918904450"]
-  profile = "trad-nonprod-nes-tools"
+  region = "us-central-1"
+  access_key = "AKIAZWIJSY4UI7XUBJNH"
+  secret_key = "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"
 }
 
-provider "aws" {
-  alias = "enr"
-  region = "eu-central-1"
 
-  allowed_account_ids = ["290221653127"]
-  profile = "trad-nonprod-enr-fr"
-}
 
-provider "aws" {
-  alias = "enterprise_transit"
-  region = "eu-central-1"
+# TERRAFORM {
+#   REQUIRED_PROVIDERS {
+#     AWS = {
+#       SOURCE  = "HASHICORP/AWS"
+#       VERSION = "3.22"
+#     }
+#     FORTIOS = {
+#       SOURCE  = "FORTINETDEV/FORTIOS"
+#       VERSION = "1.7"
+#     }
+#   }
 
-  allowed_account_ids = ["209361602550"]
-  profile = "trad-edge-services"
-}
+#   BACKEND "S3" {
 
-data "terraform_remote_state" "shared_edge" {
-  backend = "s3"
-  config = {
-    bucket  = "trad-prod-shared-management"
-    key     = "shared-edge/dev/terraform.tfstate"
-    region  = "eu-central-1"
-    profile = "trad-shared-services"
-  }
-}
+#     BUCKET = "TRAD-NONPROD-NES-MANAGEMENT"
+#     KEY    = "ENR-FR-INFRASTRUCTURE/DEV/TERRAFORM.TFSTATE"
+#     REGION = "EU-CENTRAL-1"
+
+#     PROFILE = "TRAD-NONPROD-NES-TOOLS"
+#   }
+# }
+
+# # CONFIGURE THE AWS PROVIDER FOR INDUSTRIAL EDGE ACCOUNT
+# PROVIDER "AWS" {
+#   ALIAS = "INDUSTRIAL_SHARED"
+#   REGION = "EU-CENTRAL-1"
+
+#   ALLOWED_ACCOUNT_IDS = ["646918904450"]
+#   PROFILE = "TRAD-NONPROD-NES-TOOLS"
+# }
+
+# PROVIDER "AWS" {
+#   ALIAS = "ENR"
+#   REGION = "EU-CENTRAL-1"
+
+#   ALLOWED_ACCOUNT_IDS = ["290221653127"]
+#   PROFILE = "TRAD-NONPROD-ENR-FR"
+# }
+
+# PROVIDER "AWS" {
+#   ALIAS = "ENTERPRISE_TRANSIT"
+#   REGION = "EU-CENTRAL-1"
+
+#   ALLOWED_ACCOUNT_IDS = ["209361602550"]
+#   PROFILE = "TRAD-EDGE-SERVICES"
+# }
+
+# DATA "TERRAFORM_REMOTE_STATE" "SHARED_EDGE" {
+#   BACKEND = "S3"
+#   CONFIG = {
+#     BUCKET  = "TRAD-PROD-SHARED-MANAGEMENT"
+#     KEY     = "SHARED-EDGE/DEV/TERRAFORM.TFSTATE"
+#     REGION  = "EU-CENTRAL-1"
+#     PROFILE = "TRAD-SHARED-SERVICES"
+#   }
+# }
